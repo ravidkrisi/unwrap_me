@@ -9,3 +9,5 @@ class TimerFinished extends GameEvent {}
 class MissionCompleted extends GameEvent {}
 
 class StopGame extends GameEvent {}
+
+class ChangeBackgroundColor extends GameEvent {}

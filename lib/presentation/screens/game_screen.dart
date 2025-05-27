@@ -10,12 +10,15 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: BlocConsumer<GameBloc, GameState>(
         builder: (context, state) {
           // parcel passed
           if (state is ParcelMoving) {
-            return Center(child: Column(children: [Text('parcel is moving')]));
+            return Container(
+              width: double.infinity,
+              height: double.infinity,
+              color: state.backgroundColor,
+            );
           }
 
           // parcel stopped

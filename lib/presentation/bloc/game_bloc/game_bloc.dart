@@ -2,11 +2,13 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moving_box/core/extensions/Color.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_event.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
-  Timer? timer;
+  Timer? mainTimer;
+  Timer? backgroundColorTimer;
   final List<String> missions;
   final Random _random = Random();
 
@@ -16,6 +18,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     on<ParcelPassed>(_parcelPassed);
     on<TimerFinished>(_showMission);
     on<MissionCompleted>(_resumeGame);
+    on<ChangeBackgroundColor>(_onChangeBackgroundColor);
   }
 
   void _startGame(StartGame event, Emitter<GameState> emit) {
@@ -26,15 +29,46 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     final seconds = 2 + _random.nextInt(15); // random 2-15 seconds
     final duration = Duration(seconds: seconds);
 
-    emit(ParcelMoving(timeLeft: duration));
+    final initColor = getRandomColor();
 
-    timer?.cancel();
-    timer = Timer(duration, () {
+    emit(ParcelMoving(timeLeft: duration, backgroundColor: initColor));
+
+    // start main timer
+    mainTimer?.cancel();
+    mainTimer = Timer(duration, () {
       add(TimerFinished());
+    });
+
+    // start background color timer
+    backgroundColorTimer?.cancel();
+    backgroundColorTimer = Timer.periodic(Duration(milliseconds: 300), (timer) {
+      final currState = state;
+      if (currState is ParcelMoving) {
+        add(ChangeBackgroundColor());
+      } else {
+        timer.cancel();
+      }
     });
   }
 
+  void _onChangeBackgroundColor(
+    ChangeBackgroundColor event,
+    Emitter<GameState> emit,
+  ) {
+    final currState = state;
+    if (currState is ParcelMoving) {
+      final newColor = getRandomColor();
+      emit(
+        ParcelMoving(timeLeft: currState.timeLeft, backgroundColor: newColor),
+      );
+    }
+  }
+
   void _showMission(TimerFinished event, Emitter<GameState> emit) {
+    // cancel timers
+    backgroundColorTimer?.cancel();
+    backgroundColorTimer = null;
+
     missions.shuffle();
     final mission = missions.removeAt(0);
 
