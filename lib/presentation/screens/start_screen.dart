@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:moving_box/presentation/components/my_button.dart';
+import 'package:moving_box/presentation/screens/game_screen.dart';
+
+class StartScreen extends StatelessWidget {
+  const StartScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // title
+            Column(
+              children: [
+                Text(
+                  'PASS',
+                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'THE',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  'PARCEL',
+                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 50),
+
+            // play btn
+            MyButton(
+              title: 'Start Game',
+              onPressed: () {
+                Navigator.of(
+                  context,
+                ).push(MaterialPageRoute(builder: (context) => GameScreen()));
+              },
+            ),
+
+            // options btn
+            MyButton(title: 'Options', onPressed: () {}),
+          ],
+        ),
+      ),
+    );
+  }
+}
