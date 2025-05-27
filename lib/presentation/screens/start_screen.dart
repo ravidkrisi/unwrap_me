@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moving_box/presentation/bloc/game_bloc/game_bloc.dart';
+import 'package:moving_box/presentation/bloc/game_bloc/game_event.dart';
 import 'package:moving_box/presentation/components/my_button.dart';
 import 'package:moving_box/presentation/screens/game_screen.dart';
 
@@ -37,6 +40,7 @@ class StartScreen extends StatelessWidget {
             MyButton(
               title: 'Start Game',
               onPressed: () {
+                context.read<GameBloc>().add(StartGame());
                 Navigator.of(
                   context,
                 ).push(MaterialPageRoute(builder: (context) => GameScreen()));
