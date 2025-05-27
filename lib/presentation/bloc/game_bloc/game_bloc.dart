@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:moving_box/core/extensions/Color.dart';
+import 'package:moving_box/core/utils/color.dart';
+import 'package:moving_box/core/utils/sound.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_event.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_state.dart';
 
@@ -11,6 +12,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   Timer? backgroundColorTimer;
   final List<String> missions;
   final Random _random = Random();
+  final SoundEffect sound = SoundEffect();
 
   GameBloc({required this.missions}) : super(GameInit()) {
     // register handlers
@@ -39,6 +41,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
       add(TimerFinished());
     });
 
+    // play sound
+    sound.playSound();
+
     // start background color timer
     backgroundColorTimer?.cancel();
     backgroundColorTimer = Timer.periodic(Duration(milliseconds: 300), (timer) {
@@ -65,6 +70,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   }
 
   void _showMission(TimerFinished event, Emitter<GameState> emit) {
+    // stop sound
+    sound.stopSound();
     // cancel timers
     backgroundColorTimer?.cancel();
     backgroundColorTimer = null;

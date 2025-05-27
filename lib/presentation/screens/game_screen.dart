@@ -25,6 +25,7 @@ class GameScreen extends StatelessWidget {
           if (state is ParcelStopped) {
             return Center(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(state.mission),
                   FilledButton(
