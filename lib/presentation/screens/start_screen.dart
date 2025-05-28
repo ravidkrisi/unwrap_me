@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_event.dart';
@@ -22,15 +23,15 @@ class StartScreen extends StatelessWidget {
                 Text(
                   'PASS',
                   style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-                ),
+                ).animate().slideX(begin: -1),
                 Text(
                   'THE',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
+                ).animate().slideX(begin: 1),
                 Text(
                   'PARCEL',
                   style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-                ),
+                ).animate().slideX(begin: -1),
               ],
             ),
 
