@@ -35,7 +35,11 @@ class StartScreen extends StatelessWidget {
               ],
             ),
 
-            SizedBox(height: 50),
+            // box image
+            Image.asset(
+              'assets/images/box_image.png',
+              height: 200,
+            ).animate().scaleXY(),
 
             // play btn
             MyButton(
