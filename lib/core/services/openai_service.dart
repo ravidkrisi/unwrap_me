@@ -1,8 +1,9 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
 class OpenAIService {
-  final String _apiKey = String.fromEnvironment('OPENAI_API_KEY');
+  final String _apiKey = dotenv.env['OPENAI_API_KEY'] ?? '';
 
   Future<String?> getNextQuestion() async {
     final url = Uri.parse('https://api.openai.com/v1/chat/completions');
