@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_event.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_state.dart';
+import 'package:moving_box/presentation/components/mission_card.dart';
 
 class GameScreen extends StatelessWidget {
   const GameScreen({super.key});
@@ -27,13 +28,18 @@ class GameScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(state.mission),
-                  FilledButton(
-                    onPressed: () {
+                  MissionCard(
+                    mission: state.mission,
+                    onPass: () {
                       context.read<GameBloc>().add(ParcelPassed());
                     },
-                    child: Text('PASS'),
                   ),
+                  // FilledButton(
+                  //   onPressed: () {
+                  //     context.read<GameBloc>().add(ParcelPassed());
+                  //   },
+                  //   child: Text('PASS'),
+                  // ),
                 ],
               ),
             );
