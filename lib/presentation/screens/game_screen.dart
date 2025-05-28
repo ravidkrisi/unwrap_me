@@ -13,40 +13,40 @@ class GameScreen extends StatelessWidget {
     return Scaffold(
       body: BlocConsumer<GameBloc, GameState>(
         builder: (context, state) {
-          // parcel passed
-          if (state is ParcelMoving) {
-            return Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: state.backgroundColor,
-            );
-          }
+          return AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            transitionBuilder: (child, animation) {
+              return ScaleTransition(
+                scale: animation,
+                child: FadeTransition(opacity: animation, child: child),
+              );
+            },
+            child: () {
+              // parcel moving
+              if (state is ParcelMoving) {
+                return Container(
+                  key: const ValueKey('moving'),
+                  width: double.infinity,
+                  height: double.infinity,
+                  color: state.backgroundColor,
+                );
+              }
 
-          // parcel stopped
-          if (state is ParcelStopped) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  MissionCard(
+              // parcel stopped
+              if (state is ParcelStopped) {
+                return Center(
+                  key: ValueKey('stopped '),
+                  child: MissionCard(
                     mission: state.mission,
-                    onPass: () {
-                      context.read<GameBloc>().add(ParcelPassed());
-                    },
+                    onPass: () => context.read<GameBloc>().add(ParcelPassed()),
                   ),
-                  // FilledButton(
-                  //   onPressed: () {
-                  //     context.read<GameBloc>().add(ParcelPassed());
-                  //   },
-                  //   child: Text('PASS'),
-                  // ),
-                ],
-              ),
-            );
-          }
+                );
+              }
 
-          // default
-          return Container();
+              // default
+              return Container(key: const ValueKey('default'));
+            }(),
+          );
         },
         listener: (context, state) {
           print(state);
