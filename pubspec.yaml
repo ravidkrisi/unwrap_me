@@ -39,6 +39,7 @@ dependencies:
   flex_color_scheme: ^8.2.0
   flutter_bloc: ^9.1.1
   audioplayers: ^6.4.0
+  http: ^1.4.0
 
 dev_dependencies:
   flutter_test:

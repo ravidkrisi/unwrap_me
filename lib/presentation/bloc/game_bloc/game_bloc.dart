@@ -3,18 +3,25 @@ import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moving_box/core/utils/color.dart';
-import 'package:moving_box/core/utils/sound.dart';
+import 'package:moving_box/core/services/sound.dart';
+import 'package:moving_box/domain/repos/game_repo.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_event.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_state.dart';
 
 class GameBloc extends Bloc<GameEvent, GameState> {
+  // services
+  final GameRepo repo;
+  final SoundEffect sound;
+
+  // timers
   Timer? mainTimer;
   Timer? backgroundColorTimer;
-  final List<String> missions;
-  final Random _random = Random();
-  final SoundEffect sound = SoundEffect();
 
-  GameBloc({required this.missions}) : super(GameInit()) {
+  Future<String>? _futureMission;
+
+  final Random _random = Random();
+
+  GameBloc({required this.repo, required this.sound}) : super(GameInit()) {
     // register handlers
     on<StartGame>(_startGame);
     on<ParcelPassed>(_parcelPassed);
@@ -34,6 +41,9 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     final initColor = getRandomColor();
 
     emit(ParcelMoving(timeLeft: duration, backgroundColor: initColor));
+
+    // get mission
+    _futureMission = repo.getMission();
 
     // start main timer
     mainTimer?.cancel();
@@ -69,15 +79,15 @@ class GameBloc extends Bloc<GameEvent, GameState> {
     }
   }
 
-  void _showMission(TimerFinished event, Emitter<GameState> emit) {
+  void _showMission(TimerFinished event, Emitter<GameState> emit) async {
     // stop sound
     sound.stopSound();
     // cancel timers
     backgroundColorTimer?.cancel();
     backgroundColorTimer = null;
 
-    missions.shuffle();
-    final mission = missions.removeAt(0);
+    // get mission
+    final mission = await _futureMission!;
 
     emit(ParcelStopped(mission: mission));
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:moving_box/core/theme/app_theme.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:moving_box/presentation/screens/start_screen.dart';
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         // game bloc
-        BlocProvider<GameBloc>(
-          create: (context) => GameBloc(missions: ['one', 'two']),
-        ),
+        BlocProvider<GameBloc>(create: (context) => GetIt.instance<GameBloc>()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
