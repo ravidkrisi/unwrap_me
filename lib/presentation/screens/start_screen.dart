@@ -22,24 +22,69 @@ class StartScreen extends StatelessWidget {
               children: [
                 Text(
                   'PASS',
-                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-                ).animate().slideX(begin: -1),
+                  style: TextStyle(
+                    fontSize: 60,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        color: Colors.white.withValues(alpha: 0.3),
+                        offset: Offset(5, 5),
+                        blurRadius: 5,
+                      ),
+                    ],
+                  ),
+                ).animate().slideX(
+                  begin: -3, // Start further left
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeOutCubic,
+                ),
                 Text(
                   'THE',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ).animate().slideX(begin: 1),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        color: Colors.white.withValues(alpha: 0.3),
+                        offset: Offset(5, 5),
+                        blurRadius: 3,
+                      ),
+                    ],
+                  ),
+                ).animate().slideX(
+                  begin: 3, // Start further left
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeOutCubic,
+                ),
                 Text(
                   'PARCEL',
-                  style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
-                ).animate().slideX(begin: -1),
+                  style: TextStyle(
+                    fontSize: 60,
+                    fontWeight: FontWeight.bold,
+                    shadows: [
+                      Shadow(
+                        color: Colors.white.withValues(alpha: 0.3),
+                        offset: Offset(5, 5),
+                        blurRadius: 5,
+                      ),
+                    ],
+                  ),
+                ).animate().slideX(
+                  begin: -3, // Start further left
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeOutCubic,
+                ),
               ],
             ),
 
             // box image
-            Image.asset(
-              'assets/images/box_image.png',
-              height: 200,
-            ).animate().scaleXY(),
+            Image.asset('assets/images/box_image.png', height: 200)
+                .animate()
+                .scaleXY(duration: Duration(seconds: 1))
+                .shake(
+                  duration: Duration(milliseconds: 1300),
+                  curve: Curves.easeOut,
+                ),
 
             // play btn
             MyButton(
@@ -50,10 +95,13 @@ class StartScreen extends StatelessWidget {
                   context,
                 ).push(MaterialPageRoute(builder: (context) => GameScreen()));
               },
-            ),
+            ).animate().fadeIn(duration: Duration(seconds: 1)),
 
             // options btn
-            MyButton(title: 'Options', onPressed: () {}),
+            MyButton(
+              title: 'Options',
+              onPressed: () {},
+            ).animate().fadeIn(duration: Duration(seconds: 1)),
           ],
         ),
       ),
