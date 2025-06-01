@@ -11,8 +11,8 @@ class MyButton extends StatelessWidget {
       width: 180,
       child: FilledButton(
         onPressed: onPressed,
-        style: ElevatedButton.styleFrom(),
-        child: Text(title),
+        style: FilledButton.styleFrom(shadowColor: Colors.white),
+        child: Text(title, style: TextStyle(fontWeight: FontWeight.bold)),
       ),
     );
   }

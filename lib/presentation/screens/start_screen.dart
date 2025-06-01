@@ -84,11 +84,12 @@ class StartScreen extends StatelessWidget {
                 .shake(
                   duration: Duration(milliseconds: 1300),
                   curve: Curves.easeOut,
-                ),
+                )
+                .rotate(delay: Duration(seconds: 2)),
 
             // play btn
             MyButton(
-              title: 'Start Game',
+              title: 'START GAME',
               onPressed: () {
                 context.read<GameBloc>().add(StartGame());
                 Navigator.of(
@@ -99,7 +100,7 @@ class StartScreen extends StatelessWidget {
 
             // options btn
             MyButton(
-              title: 'Options',
+              title: 'OPTIONS',
               onPressed: () {},
             ).animate().fadeIn(duration: Duration(seconds: 1)),
           ],

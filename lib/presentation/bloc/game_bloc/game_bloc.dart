@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moving_box/core/services/vibration.dart';
 import 'package:moving_box/core/utils/color.dart';
 import 'package:moving_box/core/services/sound.dart';
 import 'package:moving_box/domain/repos/game_repo.dart';
@@ -12,6 +13,7 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   // services
   final GameRepo repo;
   final SoundEffect sound;
+  final VibrationService vibration;
 
   // timers
   Timer? mainTimer;
@@ -21,7 +23,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
 
   final Random _random = Random();
 
-  GameBloc({required this.repo, required this.sound}) : super(GameInit()) {
+  GameBloc({required this.repo, required this.sound, required this.vibration})
+    : super(GameInit()) {
     // register handlers
     on<StartGame>(_startGame);
     on<ParcelPassed>(_parcelPassed);
@@ -82,6 +85,8 @@ class GameBloc extends Bloc<GameEvent, GameState> {
   void _showMission(TimerFinished event, Emitter<GameState> emit) async {
     // stop sound
     sound.stopSound();
+    // trigger vibration
+    vibration.triggerVibration();
     // cancel timers
     backgroundColorTimer?.cancel();
     backgroundColorTimer = null;
