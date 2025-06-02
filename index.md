@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon/icon.png" alt="App Icon" width="120">
+  <img src="assets/icon.png" alt="App Icon" width="120">
 </p>
 
 # 🎁 UnWrap Me
@@ -24,9 +24,9 @@ Built using Flutter and powered by OpenAI's GPT API.
 
 <!-- Add screenshots in the `assets/screenshots/` folder -->
 <p align="center">
-  <img src="assets/screenshots/screen-1.png" width="200">
-  <img src="assets/screenshots/screen-2.png" width="200">
-  <img src="assets/screenshots/screen-3.png" width="200">
+  <img src="assets/screenshots/screen1.png" width="200">
+  <img src="assets/screenshots/screen2.png" width="200">
+  <img src="assets/screenshots/screen3.png" width="200">
 </p>
 
 ---
