@@ -2,7 +2,7 @@
   <img src="assets/icon.png" alt="App Icon" width="120">
 </p>
 
-# 🎁 UnWrap the Wrap
+# 🎁 UnWrap Me
 
 **UnWrap the Wrap** is a fun, AI-powered party game inspired by the classic **Pass the Parcel**.  
 Every time the music stops, a new surprise question is unwrapped for players to answer!  
