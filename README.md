@@ -39,6 +39,17 @@ We use OpenAI’s API to generate fun prompts, but no user data is ever sent or 
 
 ---
 
+## 🆘 Support
+
+For questions, feedback, or help, contact us at:
+
+📧 ravidkrisi22@gmail.com
+
+Or visit the GitHub Pages site:  
+🌐 https://ravidkrisi.github.io/unwrap_me/
+
+---
+
 ## 🚀 Getting Started (Developers)
 
 This project is a starting point for a Flutter application.
