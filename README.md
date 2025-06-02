@@ -24,9 +24,9 @@ Built using Flutter and powered by OpenAI's GPT API.
 
 <!-- Add screenshots in the `assets/screenshots/` folder -->
 <p align="center">
-  <img src="assets/screenshots/screen-1.png" width="200">
-  <img src="assets/screenshots/screen-2.png" width="200">
-  <img src="assets/screenshots/screen-3.png" width="200">
+  <img src="assets/screenshots/screenshot-1.png" width="200">
+  <img src="assets/screenshots/screenshot-2.png" width="200">
+  <img src="assets/screenshots/screenshot-3.png" width="200">
 </p>
 
 ---
