@@ -12,9 +12,11 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.black, // Match launch screen background
       body: Center(
         child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Center everything vertically
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // title
@@ -27,14 +29,14 @@ class StartScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
-                        color: Colors.white.withValues(alpha: 0.3),
+                        color: Colors.white.withOpacity(0.3),
                         offset: Offset(5, 5),
                         blurRadius: 5,
                       ),
                     ],
                   ),
                 ).animate().slideX(
-                  begin: -3, // Start further left
+                  begin: -3,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeOutCubic,
                 ),
@@ -45,14 +47,14 @@ class StartScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
-                        color: Colors.white.withValues(alpha: 0.3),
+                        color: Colors.white.withOpacity(0.3),
                         offset: Offset(5, 5),
                         blurRadius: 3,
                       ),
                     ],
                   ),
                 ).animate().slideX(
-                  begin: 3, // Start further left
+                  begin: 3,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeOutCubic,
                 ),
@@ -63,20 +65,21 @@ class StartScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
-                        color: Colors.white.withValues(alpha: 0.3),
+                        color: Colors.white.withOpacity(0.3),
                         offset: Offset(5, 5),
                         blurRadius: 5,
                       ),
                     ],
                   ),
                 ).animate().slideX(
-                  begin: -3, // Start further left
+                  begin: -3,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeOutCubic,
                 ),
               ],
             ),
 
+            const SizedBox(height: 40), // Add spacing
             // box image
             Image.asset('assets/images/box_image.png', height: 200)
                 .animate()
@@ -84,9 +87,9 @@ class StartScreen extends StatelessWidget {
                 .shake(
                   duration: Duration(milliseconds: 1300),
                   curve: Curves.easeOut,
-                )
-                .rotate(delay: Duration(seconds: 2)),
+                ),
 
+            const SizedBox(height: 40), // Add spacing
             // play btn
             MyButton(
               title: 'START GAME',
@@ -98,6 +101,7 @@ class StartScreen extends StatelessWidget {
               },
             ).animate().fadeIn(duration: Duration(seconds: 1)),
 
+            const SizedBox(height: 20), // Add spacing
             // options btn
             MyButton(
               title: 'OPTIONS',
