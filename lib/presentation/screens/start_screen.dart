@@ -23,7 +23,7 @@ class StartScreen extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  'PASS',
+                  'UNWRAP',
                   style: TextStyle(
                     fontSize: 60,
                     fontWeight: FontWeight.bold,
@@ -40,39 +40,39 @@ class StartScreen extends StatelessWidget {
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeOutCubic,
                 ),
+                // Text(
+                //   'THE',
+                //   style: TextStyle(
+                //     fontSize: 30,
+                //     fontWeight: FontWeight.bold,
+                //     shadows: [
+                //       Shadow(
+                //         color: Colors.white.withOpacity(0.3),
+                //         offset: Offset(5, 5),
+                //         blurRadius: 3,
+                //       ),
+                //     ],
+                //   ),
+                // ).animate().slideX(
+                //   begin: 3,
+                //   duration: const Duration(seconds: 1),
+                //   curve: Curves.easeOutCubic,
+                // ),
                 Text(
-                  'THE',
+                  'ME',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 60,
                     fontWeight: FontWeight.bold,
                     shadows: [
                       Shadow(
                         color: Colors.white.withOpacity(0.3),
                         offset: Offset(5, 5),
-                        blurRadius: 3,
+                        blurRadius: 5,
                       ),
                     ],
                   ),
                 ).animate().slideX(
                   begin: 3,
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.easeOutCubic,
-                ),
-                Text(
-                  'PARCEL',
-                  style: TextStyle(
-                    fontSize: 60,
-                    fontWeight: FontWeight.bold,
-                    shadows: [
-                      Shadow(
-                        color: Colors.white.withOpacity(0.3),
-                        offset: Offset(5, 5),
-                        blurRadius: 5,
-                      ),
-                    ],
-                  ),
-                ).animate().slideX(
-                  begin: -3,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeOutCubic,
                 ),
