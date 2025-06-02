@@ -40,44 +40,8 @@ class StartScreen extends StatelessWidget {
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeOutCubic,
                 ),
-                // Text(
-                //   'THE',
-                //   style: TextStyle(
-                //     fontSize: 30,
-                //     fontWeight: FontWeight.bold,
-                //     shadows: [
-                //       Shadow(
-                //         color: Colors.white.withOpacity(0.3),
-                //         offset: Offset(5, 5),
-                //         blurRadius: 3,
-                //       ),
-                //     ],
-                //   ),
-                // ).animate().slideX(
-                //   begin: 3,
-                //   duration: const Duration(seconds: 1),
-                //   curve: Curves.easeOutCubic,
-                // ),
                 Text(
-                  'THE',
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    shadows: [
-                      Shadow(
-                        color: Colors.white.withOpacity(0.3),
-                        offset: Offset(5, 5),
-                        blurRadius: 3,
-                      ),
-                    ],
-                  ),
-                ).animate().slideX(
-                  begin: 3,
-                  duration: const Duration(seconds: 1),
-                  curve: Curves.easeOutCubic,
-                ),
-                Text(
-                  'PARCEL',
+                  'ME',
                   style: TextStyle(
                     fontSize: 60,
                     fontWeight: FontWeight.bold,
@@ -90,7 +54,7 @@ class StartScreen extends StatelessWidget {
                     ],
                   ),
                 ).animate().slideX(
-                  begin: -3,
+                  begin: 3,
                   duration: const Duration(seconds: 1),
                   curve: Curves.easeOutCubic,
                 ),
