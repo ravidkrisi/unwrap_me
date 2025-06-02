@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/icon.png" alt="App Icon" width="120">
+  <img src="assets/icon/icon.png" alt="App Icon" width="120">
 </p>
 
 # 🎁 UnWrap Me
