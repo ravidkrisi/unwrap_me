@@ -36,7 +36,6 @@ Built using Flutter and powered by OpenAI's GPT API.
 We respect your privacy. The app does **not** collect, store, or share any personal data.  
 We use OpenAI’s API to generate fun prompts, but no user data is ever sent or processed.
 
-👉 [View Full Privacy Policy](https://yourusername.github.io/moving_box/privacy-policy)
 
 ---
 
