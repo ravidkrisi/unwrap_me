@@ -71,7 +71,7 @@ class StartScreen extends StatelessWidget {
                   curve: Curves.easeOut,
                 ),
 
-            const SizedBox(height: 40), // Add spacing
+            const SizedBox(height: 10), // Add spacing
             // play btn
             MyButton(
               title: 'START GAME',
@@ -85,10 +85,10 @@ class StartScreen extends StatelessWidget {
 
             const SizedBox(height: 20), // Add spacing
             // options btn
-            MyButton(
-              title: 'OPTIONS',
-              onPressed: () {},
-            ).animate().fadeIn(duration: Duration(seconds: 1)),
+            // MyButton(
+            //   title: 'OPTIONS',
+            //   onPressed: () {},
+            // ).animate().fadeIn(duration: Duration(seconds: 1)),
           ],
         ),
       ),
