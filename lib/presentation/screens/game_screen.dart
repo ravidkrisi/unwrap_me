@@ -32,29 +32,32 @@ class GameScreen extends StatelessWidget {
           }
           // parcel stopped
           else if (state is ParcelStopped) {
-            child = Center(
-              key: const ValueKey('stopped'),
-              child: RotatedBox(
-                quarterTurns: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      icon: const Icon(CupertinoIcons.xmark_circle),
-                    ),
-                    MissionCard(
-                          mission: state.mission,
-                          onPass:
-                              () =>
-                                  context.read<GameBloc>().add(ParcelPassed()),
-                        )
-                        .animate(key: ValueKey(state.mission))
-                        .fadeIn(duration: 300.ms)
-                        .scale(),
-                  ],
+            child = SafeArea(
+              child: Center(
+                key: const ValueKey('stopped'),
+                child: RotatedBox(
+                  quarterTurns: 1,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: const Icon(CupertinoIcons.xmark_circle),
+                      ),
+                      MissionCard(
+                            mission: state.mission,
+                            onPass:
+                                () => context.read<GameBloc>().add(
+                                  ParcelPassed(),
+                                ),
+                          )
+                          .animate(key: ValueKey(state.mission))
+                          .fadeIn(duration: 300.ms)
+                          .scale(),
+                    ],
+                  ),
                 ),
               ),
             );
