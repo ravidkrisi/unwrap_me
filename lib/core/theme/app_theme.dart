@@ -21,6 +21,7 @@ abstract final class AppTheme {
   static ThemeData light = FlexThemeData.light(
     // Using FlexColorScheme built-in FlexScheme enum based colors
     scheme: FlexScheme.materialHc,
+    fontFamily: 'PressStart2P',
     // Component theme configurations for light mode.
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,
@@ -40,6 +41,7 @@ abstract final class AppTheme {
   static ThemeData dark = FlexThemeData.dark(
     // Using FlexColorScheme built-in FlexScheme enum based colors.
     scheme: FlexScheme.materialHc,
+    fontFamily: 'PressStart2P',
     // Component theme configurations for dark mode.
     subThemesData: const FlexSubThemesData(
       interactionEffects: true,

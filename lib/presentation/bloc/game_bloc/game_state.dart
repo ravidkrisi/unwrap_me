@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+import 'package:moving_box/domain/entities/prompt.dart';
 
 abstract class GameState {}
 
@@ -16,6 +17,6 @@ class ParcelMoving extends GameState {
 
 // parcel stopped
 class ParcelStopped extends GameState {
-  final String mission;
-  ParcelStopped({required this.mission});
+  final Prompt prompt;
+  ParcelStopped({required this.prompt});
 }

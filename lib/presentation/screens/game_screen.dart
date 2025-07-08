@@ -40,20 +40,14 @@ class GameScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: const Icon(CupertinoIcons.xmark_circle),
-                      ),
                       MissionCard(
-                            mission: state.mission,
+                            prompt: state.prompt,
                             onPass:
                                 () => context.read<GameBloc>().add(
                                   ParcelPassed(),
                                 ),
                           )
-                          .animate(key: ValueKey(state.mission))
+                          .animate(key: ValueKey(state.prompt))
                           .fadeIn(duration: 300.ms)
                           .scale(),
                     ],

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:moving_box/core/services/sound_service.dart';
+import 'package:moving_box/core/utils/service_locator.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_bloc.dart';
 import 'package:moving_box/presentation/bloc/game_bloc/game_event.dart';
 import 'package:moving_box/presentation/components/my_button.dart';
-import 'package:moving_box/presentation/screens/game_screen.dart';
+import 'package:moving_box/presentation/screens/genre_screen.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Trigger event on first build
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<GameBloc>().add(InitGame());
+    });
+
     return Scaffold(
       backgroundColor: Colors.black, // Match launch screen background
       body: Center(
@@ -61,9 +68,8 @@ class StartScreen extends StatelessWidget {
               ],
             ),
 
-            const SizedBox(height: 40), // Add spacing
             // box image
-            Image.asset('assets/images/box_image.png', height: 200)
+            Image.asset('assets/images/box_image_pixel.png', height: 300)
                 .animate()
                 .scaleXY(duration: Duration(seconds: 1))
                 .shake(
@@ -71,24 +77,25 @@ class StartScreen extends StatelessWidget {
                   curve: Curves.easeOut,
                 ),
 
-            const SizedBox(height: 10), // Add spacing
-            // play btn
-            MyButton(
-              title: 'START GAME',
-              onPressed: () {
-                context.read<GameBloc>().add(StartGame());
-                Navigator.of(
-                  context,
-                ).push(MaterialPageRoute(builder: (context) => GameScreen()));
-              },
-            ).animate().fadeIn(duration: Duration(seconds: 1)),
+            // start game btn
+            SizedBox(
+              height: 55,
+              child: MyButton(
+                title: 'START GAME',
+                fontSize: 12,
+                onPressed: () {
+                  // play sound
+                  getIt<SoundService>().btnPressedSound();
+
+                  // navigate to genre screen
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => GenreScreen()),
+                  );
+                },
+              ).animate().fadeIn(duration: Duration(seconds: 1)),
+            ),
 
             const SizedBox(height: 20), // Add spacing
-            // options btn
-            // MyButton(
-            //   title: 'OPTIONS',
-            //   onPressed: () {},
-            // ).animate().fadeIn(duration: Duration(seconds: 1)),
           ],
         ),
       ),
